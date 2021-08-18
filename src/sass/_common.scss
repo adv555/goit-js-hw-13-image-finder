@@ -1,0 +1,42 @@
+body {
+  font-family: $main-font;
+  background-color: $white-color;
+  font-family: Trebuchet MS;
+  // background: currentColor;
+  // background: linear-gradient(45deg, black, transparent);
+  background-image: url('../images/bg-pattern.png');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.list {
+  list-style: none;
+}
+.address {
+  font-style: normal;
+}

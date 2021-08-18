@@ -10,14 +10,37 @@
       integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
       crossorigin="anonymous"
     />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="dist/basicLightbox.min.css" /> -->
   </head>
   <body>
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
     <include src="./partials/search-form.html"></include>
-    <ul class="gallery">
-      <!-- Список <li> с карточками изображений -->
-    </ul>
+    <section class="gallery">
+      <!-- <div class="container"> -->
+      <ul class="js-gallery gallery-list list">
+        <!-- Список <li> с карточками изображений -->
+      </ul>
+      <button type="button" class="btn btn-secondary hidden">Load more</button>
+      <!-- <button class="btn btn-primary" type="button" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Loading...
+        </button> -->
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <!-- </div> -->
+    </section>
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
+    <!-- <script src="dist/basicLightbox.min.js"></script> -->
   </body>
 </html>

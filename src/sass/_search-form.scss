@@ -1,0 +1,35 @@
+/* GENERAL CSS */
+.m-t-30 {
+  margin-top: 30px;
+  margin-left: 1%;
+}
+
+.m-t-50 {
+  margin-top: 50px;
+}
+
+.m-b-50 {
+  margin-bottom: 50px;
+}
+.text-center {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+/* END GENERAL CSS */
+
+/* EXAMPLE 3 */
+.input-search-3 {
+  position: relative;
+}
+
+.input-search-3 input {
+  padding-right: 40px;
+}
+
+.input-search-3 span {
+  font-size: 20px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #ccc;
+}
