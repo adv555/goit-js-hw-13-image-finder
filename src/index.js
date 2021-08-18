@@ -2,31 +2,36 @@ import './sass/main.scss';
 import refs from './js/refs';
 import imageCardTpl from './templates/image-card';
 import ImageServiceApi from './js/fetch-Images';
-// import LoadMoreBtn from './js/load-more-btn';
+import LoadMoreBtn from './js/load-more-btn';
 import createNotice from './js/notices';
-// var debounce = require('lodash.debounce');
+import zoomImage from './js/image-lightbox';
 
 // =========== refs
 
-// =========== listeners
-// refs.searchForm.addEventListener('input', debounce(onSearch, 500));
-refs.searchForm.addEventListener('submit', onSearch);
-refs.loadMoreBtn.addEventListener('click', onLoadMore);
-
 // =========== new class
 const imageServiceApi = new ImageServiceApi();
-// const loadMoreBtn = new LoadMoreBtn();
+const loadMoreBtn = new LoadMoreBtn({
+  selector: '[data-action="load-more"]',
+  hidden: true,
+});
+
+// =========== listeners
+
+refs.searchForm.addEventListener('submit', onSearch);
+refs.gallery.addEventListener('click', zoomImage);
+loadMoreBtn.refs.button.addEventListener('click', onLoadMore);
 
 // =========== search
 
 function onSearch(e) {
   e.preventDefault();
-  // console.log(e.currentTarget.elements.query.value);
-  // const query = e.currentTarget.elements.query.value);
+
   imageServiceApi.query = e.currentTarget.elements.query.value;
   if (imageServiceApi.query == '' || imageServiceApi.query == null) {
     return createNotice();
   }
+  loadMoreBtn.show();
+  loadMoreBtn.disable();
   imageServiceApi.resetPage();
 
   imageServiceApi
@@ -34,12 +39,12 @@ function onSearch(e) {
     .then(data => {
       refs.gallery.innerHTML = '';
       renderSearchContent(data);
-      refs.loadMoreBtn.classList.remove('hidden');
 
-      refs.loadMoreBtn.scrollIntoView({
+      loadMoreBtn.refs.button.scrollIntoView({
         behavior: 'smooth',
         block: 'end',
       });
+      loadMoreBtn.enable();
     })
     .catch(err => console.log(err));
 }
@@ -58,14 +63,16 @@ function renderSearchContent(data) {
 // ============== btn
 
 function onLoadMore() {
+  loadMoreBtn.disable();
   imageServiceApi
     .fetchImages()
     .then(data => {
       renderSearchContent(data);
-      refs.loadMoreBtn.scrollIntoView({
+      loadMoreBtn.refs.button.scrollIntoView({
         behavior: 'smooth',
         block: 'end',
       });
+      loadMoreBtn.enable();
     })
     .catch(err => console.log(err));
 }

@@ -10,6 +10,7 @@
   background-color: $white-color;
   transition: box-shadow 250ms $cubik;
   display: flex;
+  justify-content: center;
 
   &:not(:last-child) {
     margin-bottom: 30px;

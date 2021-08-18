@@ -1,8 +1,14 @@
 {{#each this}}
   <li class='gallery-list__card'>
-    {{! <a class='gallery-list__link link' href=''> }}
     <div class='photo-card gallery-list__card-thumb'>
-      <img src={{webformatURL}} alt='' />
+      <img
+        loading='lazy'
+        src='{{webformatURL}}'
+        data-src='{{largeImageURL}}'
+        alt=''
+        height='250px'
+        width='200px'
+      />
     </div>
     <div class='stats gallery-list__card-content'>
       <p class='stats-item'>

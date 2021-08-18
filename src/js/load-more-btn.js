@@ -11,19 +11,19 @@ export default class LoadMoreBtn {
     return refs;
   }
   enable() {
-    this.refs.button.disable = false;
+    this.refs.button.disabled = false;
     this.refs.lable.textContent = 'Show More';
     this.refs.spinner.classList.add('hidden');
   }
   disable() {
-    this.refs.button.disable = true;
-    this.refs.lable.textContent = 'Downloading...';
+    this.refs.button.disabled = true;
+    this.refs.lable.textContent = '';
     this.refs.spinner.classList.remove('hidden');
   }
   show() {
-    this.refs.button.remove('hidden');
+    this.refs.button.classList.remove('hidden');
   }
   hide() {
-    this.refs.button.add('hidden');
+    this.refs.button.classList.add('hidden');
   }
 }
