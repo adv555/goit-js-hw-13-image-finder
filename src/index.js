@@ -30,8 +30,8 @@ function onSearch(e) {
   if (imageServiceApi.query == '' || imageServiceApi.query == null) {
     return createNotice();
   }
-  loadMoreBtn.show();
-  loadMoreBtn.disable();
+  // loadMoreBtn.showBtn();
+  loadMoreBtn.disableSpinner();
   imageServiceApi.resetPage();
 
   imageServiceApi
@@ -40,11 +40,34 @@ function onSearch(e) {
       refs.gallery.innerHTML = '';
       renderSearchContent(data);
 
+      loadMoreBtn.enableSpinner();
+      loadMoreBtn.showBtn();
+
       loadMoreBtn.refs.button.scrollIntoView({
         behavior: 'smooth',
         block: 'end',
       });
-      loadMoreBtn.enable();
+    })
+    .catch(err => console.log(err));
+}
+
+// ============== btn
+
+function onLoadMore() {
+  loadMoreBtn.disableSpinner();
+  imageServiceApi
+    .fetchImages()
+    .then(data => {
+      renderSearchContent(data);
+
+      loadMoreBtn.enableSpinner();
+      loadMoreBtn.showBtn();
+
+      loadMoreBtn.refs.button.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+      });
+      // loadMoreBtn.enableSpinner();
     })
     .catch(err => console.log(err));
 }
@@ -58,21 +81,4 @@ function creatCardsMarckup(data, template) {
 function renderSearchContent(data) {
   const arr = data.hits;
   creatCardsMarckup(arr, imageCardTpl);
-}
-
-// ============== btn
-
-function onLoadMore() {
-  loadMoreBtn.disable();
-  imageServiceApi
-    .fetchImages()
-    .then(data => {
-      renderSearchContent(data);
-      loadMoreBtn.refs.button.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-      });
-      loadMoreBtn.enable();
-    })
-    .catch(err => console.log(err));
 }

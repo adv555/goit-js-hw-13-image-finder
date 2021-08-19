@@ -4,12 +4,12 @@
  */
 
 // Стили для файла с примером HTML-фрагмента
-@import './variables';
-@import './mixins';
-@import './common';
-@import './container';
-@import './search-form';
-@import './gallery';
-@import './btn';
-@import './notice';
-@import './spinner';
+@import './utils/variables';
+@import './utils/mixins';
+@import './base/common';
+// @import './base/container';
+@import './components/search-form';
+@import './layouts/gallery';
+@import './components/btn';
+@import './components/notice';
+@import './components/spinner';
