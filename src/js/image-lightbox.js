@@ -1,6 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
 
-export default function zoomImage(e) {
+export default function (e) {
   const dataSrc = e.target.dataset.src;
   console.log(e.target.nodeName);
   console.log(dataSrc);

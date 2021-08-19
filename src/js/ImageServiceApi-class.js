@@ -26,7 +26,7 @@ export default class ImageServiceApi {
       .then(data => {
         this.increamentPage();
         // console.log(this);
-        console.log(data);
+        // console.log(data);
         return data;
       });
   }
