@@ -11,15 +11,9 @@ export default class LoadMoreBtn {
     return refs;
   }
   enableSpinner() {
-    // this.refs.button.classList.remove('hidden');
-    // this.refs.button.disabled = false;
-    // this.refs.lable.textContent = 'Show More';
     this.refs.spinner.classList.add('hidden');
   }
   disableSpinner() {
-    // this.refs.button.classList.add('hidden');
-    // this.refs.button.disabled = true;
-    // this.refs.lable.textContent = 'Loading...';
     this.refs.spinner.classList.remove('hidden');
   }
   showBtn() {

@@ -5,7 +5,7 @@ import ImageServiceApi from './js/fetch-Images';
 import LoadMoreBtn from './js/load-more-btn';
 import createNotice from './js/notices';
 import zoomImage from './js/image-lightbox';
-
+import onTopBtn from './js/back-to-top-btn';
 // =========== refs
 
 // =========== new class
@@ -14,7 +14,8 @@ const loadMoreBtn = new LoadMoreBtn({
   selector: '[data-action="load-more"]',
   hidden: true,
 });
-
+// =========== fn
+onTopBtn();
 // =========== listeners
 
 refs.searchForm.addEventListener('submit', onSearch);
@@ -59,6 +60,12 @@ function onLoadMore() {
     .fetchImages()
     .then(data => {
       renderSearchContent(data);
+      console.log(data.hits.length);
+      if (data.hits.length < 12 || data.hits.length < null) {
+        loadMoreBtn.disableSpinner();
+        loadMoreBtn.hideBtn();
+        return;
+      }
 
       loadMoreBtn.enableSpinner();
       loadMoreBtn.showBtn();
