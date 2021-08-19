@@ -7,7 +7,7 @@ import zoomImage from './js/image-lightbox';
 import backToTopBtn from './js/back-to-top-btn';
 import renderSearchContent from './js/render-search-content';
 
-// =========== new class
+// =========== new class instance
 const imageServiceApi = new ImageServiceApi();
 const loadMoreBtn = new LoadMoreBtn({
   selector: '[data-action="load-more"]',
@@ -31,7 +31,7 @@ function onSearch(e) {
     return createNotice();
   }
 
-  loadMoreBtn.disableSpinner();
+  loadMoreBtn.enableSpinner();
   imageServiceApi.resetPage();
 
   imageServiceApi
@@ -39,11 +39,7 @@ function onSearch(e) {
     .then(data => {
       refs.gallery.innerHTML = '';
       renderSearchContent(data);
-
-      loadMoreBtn.enableSpinner();
-      loadMoreBtn.showBtn();
-
-      scrollContent();
+      checkData(data);
     })
     .catch(err => console.log(err));
 }
@@ -51,25 +47,30 @@ function onSearch(e) {
 // ============== on-load-more-btn fn
 
 function onLoadMore() {
-  loadMoreBtn.disableSpinner();
+  loadMoreBtn.hideBtn();
+  loadMoreBtn.enableSpinner();
 
   imageServiceApi
     .fetchImages()
     .then(data => {
       renderSearchContent(data);
-
-      if (data.hits.length < 12 || data.hits.length < null) {
-        loadMoreBtn.disableSpinner();
-        loadMoreBtn.hideBtn();
-
-        return;
-      }
-      loadMoreBtn.enableSpinner();
-      loadMoreBtn.showBtn();
-
-      scrollContent();
+      checkData(data);
     })
     .catch(err => console.log(err));
+}
+
+// =========== check data
+function checkData(data) {
+  if (data.hits.length < 12) {
+    loadMoreBtn.disableSpinner();
+    loadMoreBtn.hideBtn();
+
+    return createNotice();
+  }
+  loadMoreBtn.disableSpinner();
+  loadMoreBtn.showBtn();
+
+  scrollContent();
 }
 
 // ========= smooth scroll

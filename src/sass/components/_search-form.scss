@@ -12,7 +12,7 @@
   margin-bottom: 50px;
 }
 .text-center {
-  color: #ccc;
+  color: $secondary-color;
   margin-bottom: 15px;
 }
 /* END GENERAL CSS */
@@ -31,5 +31,5 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  color: #ccc;
+  color: $secondary-color;
 }

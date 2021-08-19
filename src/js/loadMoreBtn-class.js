@@ -11,10 +11,10 @@ export default class LoadMoreBtn {
     return refs;
   }
   enableSpinner() {
-    this.refs.spinner.classList.add('hidden');
+    this.refs.spinner.classList.remove('hidden');
   }
   disableSpinner() {
-    this.refs.spinner.classList.remove('hidden');
+    this.refs.spinner.classList.add('hidden');
   }
   showBtn() {
     this.refs.button.classList.remove('hidden');
