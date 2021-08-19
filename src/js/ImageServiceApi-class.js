@@ -1,30 +1,3 @@
-//============= version 1
-
-// const API_KEY = '22901299-3a9abb112bfd753d84521cd93';
-// const BASE_URL = 'https://pixabay.com/api/';
-// const IMAGE_TYPE = 'photo&illustration';
-// const page = 1;
-// const per_page = 12;
-
-// export default function fetchImages(searchQuery) {
-//   return fetch(
-//     '' +
-//       BASE_URL +
-//       '?key=' +
-//       API_KEY +
-//       '&image_type=' +
-//       IMAGE_TYPE +
-//       '&q=' +
-//       searchQuery +
-//       '&page=' +
-//       page +
-//       '&per_page=' +
-//       per_page +
-//       '',
-//   ).then(response => response.json());
-// }
-
-//============= version 2
 const API_KEY = '22901299-3a9abb112bfd753d84521cd93';
 const BASE_URL = 'https://pixabay.com/api/';
 const IMAGE_TYPE = 'photo&orientation=horizontal';
@@ -35,7 +8,6 @@ export default class ImageServiceApi {
     this.page = 1;
   }
   fetchImages() {
-    // const url = `${BASE_URL}?key=${API_KEY}&image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12`;
     const url =
       '' +
       BASE_URL +
@@ -71,3 +43,29 @@ export default class ImageServiceApi {
     this.searchQuery = newQuery;
   }
 }
+
+//============= version 2
+
+// const API_KEY = '22901299-3a9abb112bfd753d84521cd93';
+// const BASE_URL = 'https://pixabay.com/api/';
+// const IMAGE_TYPE = 'photo&illustration';
+// const page = 1;
+// const per_page = 12;
+
+// export default function fetchImages(searchQuery) {
+//   return fetch(
+//     '' +
+//       BASE_URL +
+//       '?key=' +
+//       API_KEY +
+//       '&image_type=' +
+//       IMAGE_TYPE +
+//       '&q=' +
+//       searchQuery +
+//       '&page=' +
+//       page +
+//       '&per_page=' +
+//       per_page +
+//       '',
+//   ).then(response => response.json());
+// }

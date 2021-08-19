@@ -1,11 +1,12 @@
 import './sass/main.scss';
 import refs from './js/refs';
-import imageCardTpl from './templates/image-card';
-import ImageServiceApi from './js/fetch-Images';
-import LoadMoreBtn from './js/load-more-btn';
+// import imageCardTpl from './templates/image-card';
+import ImageServiceApi from './js/ImageServiceApi-class';
+import LoadMoreBtn from './js/loadMoreBtn-class';
 import createNotice from './js/notices';
 import zoomImage from './js/image-lightbox';
 import onTopBtn from './js/back-to-top-btn';
+import renderSearchContent from './js/render-search-content';
 // =========== refs
 
 // =========== new class
@@ -14,8 +15,9 @@ const loadMoreBtn = new LoadMoreBtn({
   selector: '[data-action="load-more"]',
   hidden: true,
 });
-// =========== fn
+// =========== back-to-top-button
 onTopBtn();
+
 // =========== listeners
 
 refs.searchForm.addEventListener('submit', onSearch);
@@ -52,10 +54,11 @@ function onSearch(e) {
     .catch(err => console.log(err));
 }
 
-// ============== btn
+// ============== on-load-more-btn fn
 
 function onLoadMore() {
   loadMoreBtn.disableSpinner();
+
   imageServiceApi
     .fetchImages()
     .then(data => {
@@ -74,18 +77,6 @@ function onLoadMore() {
         behavior: 'smooth',
         block: 'end',
       });
-      // loadMoreBtn.enableSpinner();
     })
     .catch(err => console.log(err));
-}
-
-// =========== marckup
-
-function creatCardsMarckup(data, template) {
-  refs.gallery.insertAdjacentHTML('beforeend', template(data));
-}
-
-function renderSearchContent(data) {
-  const arr = data.hits;
-  creatCardsMarckup(arr, imageCardTpl);
 }
