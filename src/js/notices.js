@@ -5,7 +5,7 @@ import refs from './refs';
 // ========= Notices & onFetchError
 
 export default function createNotice() {
-  refs.gallery.innerHTML = '';
+  // refs.gallery.innerHTML = '';
   error({
     type: 'notice',
     delay: 500,
