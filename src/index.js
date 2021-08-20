@@ -25,7 +25,7 @@ loadMoreBtn.refs.button.addEventListener('click', onLoadMore);
 function onSearch(e) {
   e.preventDefault();
 
-  imageServiceApi.query = e.currentTarget.elements.query.value;
+  imageServiceApi.query = e.currentTarget.elements.query.value.trim();
 
   if (imageServiceApi.query == '' || imageServiceApi.query == null) {
     return createNotice();
