@@ -48,13 +48,14 @@ function onSearch(e) {
 
 function onLoadMore() {
   loadMoreBtn.hideBtn();
-  loadMoreBtn.enableSpinner();
+  // loadMoreBtn.enableSpinner();
 
   imageServiceApi
     .fetchImages()
     .then(data => {
       renderSearchContent(data);
       checkData(data);
+      scrollContent();
     })
     .catch(err => console.log(err));
 }
@@ -70,7 +71,7 @@ function checkData(data) {
   loadMoreBtn.disableSpinner();
   loadMoreBtn.showBtn();
 
-  scrollContent();
+  // scrollContent();
 }
 
 // ========= smooth scroll
